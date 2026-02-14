@@ -20,6 +20,12 @@ function connect() {
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsUrl = `${protocol}//${window.location.host}`;
     
+    // Clear any existing reconnect interval
+    if (reconnectInterval) {
+        clearInterval(reconnectInterval);
+        reconnectInterval = null;
+    }
+    
     ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {

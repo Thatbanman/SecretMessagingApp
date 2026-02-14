@@ -33,11 +33,24 @@ wss.on('connection', (ws) => {
     try {
       const message = JSON.parse(data);
       
+      // Validate message content
+      if (!message.message || typeof message.message !== 'string') {
+        return;
+      }
+      
+      // Sanitize and limit message length
+      const sanitizedMessage = message.message.trim().slice(0, 500);
+      const sanitizedUsername = (message.username || 'Anonymous').trim().slice(0, 20);
+      
+      if (!sanitizedMessage) {
+        return;
+      }
+      
       // Broadcast message to all clients
       const broadcastMessage = {
         type: 'message',
-        username: message.username || 'Anonymous',
-        message: message.message,
+        username: sanitizedUsername,
+        message: sanitizedMessage,
         timestamp: new Date().toISOString()
       };
 
