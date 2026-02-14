@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Chat - Secret Messaging App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Global Chat</h1>
+            <div class="user-info">
+                <span id="userCount" class="user-count">0 users online</span>
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <div id="messages" class="messages"></div>
+        </div>
+
+        <div class="input-container">
+            <input 
+                type="text" 
+                id="usernameInput" 
+                placeholder="Your name..." 
+                maxlength="20"
+            />
+            <input 
+                type="text" 
+                id="messageInput" 
+                placeholder="Type a message..." 
+                maxlength="500"
+            />
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
